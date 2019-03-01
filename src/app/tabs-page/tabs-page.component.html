@@ -1,0 +1,16 @@
+<div>
+  <span class="example-input-label"> Selected tab index: </span>  
+</div>
+
+<div>
+  <button mat-raised-button (click)="addTab()">
+    Add new tab
+  </button>
+</div>
+
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected = ($event)">
+  <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+      <app-tabs-content [message]="tab" (deleteEvent)="receiveMessage($event)"></app-tabs-content>
+      <p>{{receivedMessage}}</p>  
+  </mat-tab>
+</mat-tab-group>
